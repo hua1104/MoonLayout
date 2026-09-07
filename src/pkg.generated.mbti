@@ -1,0 +1,49 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "hua1104/moonlayout"
+
+// Values
+pub fn default_layout_config() -> LayoutConfig
+
+pub fn layout(Graph, LayoutConfig) -> Graph
+
+pub fn make_graph(Array[String], Array[Edge]) -> Graph
+
+pub fn normalize_layout_config(LayoutConfig) -> LayoutConfig
+
+pub fn parse_edge_list(String) -> Graph
+
+pub fn render_svg(Graph, LayoutConfig) -> String
+
+// Errors
+
+// Types and methods
+pub(all) struct Edge {
+  source : Int
+  target : Int
+}
+
+pub(all) struct Graph {
+  nodes : Array[Node]
+  edges : Array[Edge]
+}
+
+pub(all) struct LayoutConfig {
+  width : Int
+  height : Int
+  iterations : Int
+  link_distance : Int
+  repulsion : Int
+  gravity : Int
+  damping : Int
+}
+
+pub(all) struct Node {
+  id : String
+  x : Int
+  y : Int
+}
+
+// Type aliases
+
+// Traits
+
