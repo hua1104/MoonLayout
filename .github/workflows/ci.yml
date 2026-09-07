@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  moonbit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install MoonBit
+        shell: bash
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+      - name: Check formatting
+        run: moon fmt --check
+      - name: Check warnings
+        run: moon check --deny-warn
+      - name: Run tests
+        run: moon test --deny-warn
+      - name: Verify generated interfaces
+        run: moon info
+      - name: Build CLI
+        run: moon build --target js src/cmd/moonlayout
+      - name: Run CLI integration tests
+        run: node --test tests/cli.integration.test.mjs
+      - name: Render demo
+        run: moon run src/cmd/moonlayout -- --edges A-B,B-C,C-A --out demo.svg
