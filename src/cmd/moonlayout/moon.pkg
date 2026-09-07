@@ -1,0 +1,5 @@
+import {
+  "hua1104/moonlayout" @core,
+}
+
+pkgtype(kind: "executable")
