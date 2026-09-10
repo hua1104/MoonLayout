@@ -3,7 +3,8 @@
 在项目根目录执行：
 
 ```bash
-moon version
+moon version  # CI uses the latest MoonBit toolchain
+node --version  # CI uses Node.js 24
 moon fmt --check
 moon check --deny-warn
 moon test --deny-warn

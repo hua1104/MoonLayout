@@ -19,6 +19,10 @@ tests easy to verify.
 Prerequisites: the MoonBit toolchain and Node.js (the JS target uses Node's
 filesystem API only for writing the output file).
 
+Repository CI uses the latest MoonBit toolchain and normalizes formatting before
+the build, so formatter upgrades do not cause a false-negative before the real
+checks run. The CI workflow uses Node.js 24.
+
 ```bash
 moon check --deny-warn
 moon test --deny-warn
