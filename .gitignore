@@ -1,4 +1,9 @@
 _build/
 .moon/
 target/
-cli-test.svg
+audit-report.json
+audit.svg
+cli-report.json
+cli-audit.svg
+overlap-report.json
+overlap-audit.svg

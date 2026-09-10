@@ -23,8 +23,8 @@ jobs:
         run: |
           moon version
           node --version
-      - name: Normalize formatting
-        run: moon fmt
+      - name: Check formatting
+        run: moon fmt --check
       - name: Check warnings
         run: moon check --deny-warn
       - name: Run tests
@@ -35,5 +35,5 @@ jobs:
         run: moon build --target js src/cmd/moonlayout
       - name: Run CLI integration tests
         run: node --test tests/cli.integration.test.mjs
-      - name: Render demo
-        run: moon run src/cmd/moonlayout -- --edges A-B,B-C,C-A --out demo.svg
+      - name: Audit example snapshot
+        run: moon run src/cmd/moonlayout -- --input examples/pipeline.snapshot --report audit-report.json --svg audit.svg
