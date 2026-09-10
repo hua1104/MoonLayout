@@ -2,45 +2,72 @@
 package "hua1104/moonlayout"
 
 // Values
-pub fn default_layout_config() -> LayoutConfig
+pub fn audit_snapshot(LayoutSnapshot, AuditConfig) -> AuditReport
 
-pub fn layout(Graph, LayoutConfig) -> Graph
+pub fn default_audit_config() -> AuditConfig
 
-pub fn make_graph(Array[String], Array[Edge]) -> Graph
+pub fn make_snapshot(Int, Int, Array[PositionedNode], Array[Edge]) -> LayoutSnapshot
 
-pub fn normalize_layout_config(LayoutConfig) -> LayoutConfig
+pub fn parse_snapshot(String) -> Result[LayoutSnapshot, String]
 
-pub fn parse_edge_list(String) -> Graph
+pub fn render_audit_svg(LayoutSnapshot, AuditReport) -> String
 
-pub fn render_svg(Graph, LayoutConfig) -> String
+pub fn report_to_json(AuditReport) -> String
+
+pub fn report_to_text(AuditReport) -> String
 
 // Errors
 
 // Types and methods
-pub(all) struct Edge {
-  source : Int
-  target : Int
+pub(all) struct AuditConfig {
+  max_overlaps : Int
+  max_crossings : Int
+  max_out_of_bounds : Int
+  min_edge_length : Int
+  max_edge_length : Int
 }
 
-pub(all) struct Graph {
-  nodes : Array[Node]
+pub(all) struct AuditReport {
+  nodes : Int
+  edges : Int
+  overlap_pairs : Int
+  duplicate_positions : Int
+  out_of_bounds : Int
+  edge_crossings : Int
+  invalid_edge_endpoints : Int
+  min_edge_length : Int
+  max_edge_length : Int
+  average_edge_length : Int
+  passed : Bool
+  fingerprint : String
+  violations : Array[Violation]
+}
+
+pub(all) struct Edge {
+  source : String
+  target : String
+}
+
+pub(all) struct LayoutSnapshot {
+  width : Int
+  height : Int
+  nodes : Array[PositionedNode]
   edges : Array[Edge]
 }
 
-pub(all) struct LayoutConfig {
-  width : Int
-  height : Int
-  iterations : Int
-  link_distance : Int
-  repulsion : Int
-  gravity : Int
-  damping : Int
-}
-
-pub(all) struct Node {
+pub(all) struct PositionedNode {
   id : String
   x : Int
   y : Int
+  width : Int
+  height : Int
+}
+
+pub(all) struct Violation {
+  kind : String
+  first : String
+  second : String
+  detail : String
 }
 
 // Type aliases
