@@ -1,17 +1,18 @@
-# MoonLayout Roadmap
+# MoonLayout Audit Roadmap
 
 ## Delivered
 
-- Deterministic integer force-directed layout for small and medium graphs.
-- Stable grid initialization, bounds normalization, and invalid-edge guards.
-- Self-contained SVG output with escaped node labels.
-- MoonBit library API, CLI demo, unit tests, Node integration tests, and CI.
+- Deterministic `.snapshot` parser with line-numbered errors.
+- Node overlap, duplicate position, bounds and edge-crossing checks.
+- Edge-length statistics and stable snapshot fingerprints.
+- Machine-readable JSON report and CI-friendly exit codes.
+- Annotated SVG with arrows, accessibility metadata and problem highlighting.
+- MoonBit unit tests, Node CLI integration tests and a clean CI example.
 
 ## Next
 
-- Optional directional arrows and edge labels in SVG.
-- Connected-component packing for large disconnected graphs.
-- WASM host example for embedding the layout engine in a browser.
-- Incremental layout updates when one node or edge changes.
-
-The roadmap deliberately keeps the core dependency-free and deterministic.
+- Optional JSON/ELK snapshot importer.
+- Baseline diff report showing moved, added and removed nodes.
+- More geometry checks such as label bounds and edge-through-node detection.
+- Benchmark fixtures for 100, 1,000 and 10,000 node snapshots.
+- Adapters for Moon ELK, Graphviz and common documentation generators.
