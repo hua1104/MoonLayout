@@ -1,0 +1,4 @@
+canvas 400 300
+node A 120 150 80 80
+node B 120 150 80 80
+edge A B

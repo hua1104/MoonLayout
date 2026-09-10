@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img">
+<title>MoonLayout Audit report</title>
+<desc>status=PASS overlaps=0 crossings=0 out_of_bounds=0</desc>
+<defs><marker id="arrow-ok" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#58c4dd"/></marker><marker id="arrow-error" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#ff6b6b"/></marker></defs>
+<rect width="100%" height="100%" fill="#101820"/>
+<line x1="120" y1="260" x2="360" y2="260" stroke="#58c4dd" stroke-width="2" opacity=".82" marker-end="url(#arrow-ok)"/>
+<line x1="360" y1="260" x2="600" y2="180" stroke="#58c4dd" stroke-width="2" opacity=".82" marker-end="url(#arrow-ok)"/>
+<line x1="360" y1="260" x2="600" y2="340" stroke="#58c4dd" stroke-width="2" opacity=".82" marker-end="url(#arrow-ok)"/>
+<g><rect x="98" y="238" width="44" height="44" rx="8" fill="#f3a847" stroke="#fff3d6" stroke-width="2"/><text x="120" y="265" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#101820">Client</text></g>
+<g><rect x="338" y="238" width="44" height="44" rx="8" fill="#f3a847" stroke="#fff3d6" stroke-width="2"/><text x="360" y="265" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#101820">API</text></g>
+<g><rect x="578" y="158" width="44" height="44" rx="8" fill="#f3a847" stroke="#fff3d6" stroke-width="2"/><text x="600" y="185" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#101820">DB</text></g>
+<g><rect x="578" y="318" width="44" height="44" rx="8" fill="#f3a847" stroke="#fff3d6" stroke-width="2"/><text x="600" y="345" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#101820">Queue</text></g>
+<text x="16" y="584" font-family="monospace" font-size="13" fill="#fff3d6">status=PASS overlaps=0 crossings=0 out_of_bounds=0</text>
+</svg>

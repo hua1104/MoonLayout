@@ -1,0 +1,16 @@
+{
+  "nodes": 4,
+  "edges": 3,
+  "overlap_pairs": 0,
+  "duplicate_positions": 0,
+  "out_of_bounds": 0,
+  "edge_crossings": 0,
+  "invalid_edge_endpoints": 0,
+  "min_edge_length": 240,
+  "max_edge_length": 320,
+  "average_edge_length": 293,
+  "passed": true,
+  "fingerprint": "500212899",
+  "violations": [
+  ]
+}

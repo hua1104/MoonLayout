@@ -27,19 +27,60 @@ function runCli(args, status = 0) {
   return result;
 }
 
-test("CLI renders a valid deterministic SVG", async () => {
-  const output = path.join(repoRoot, "cli-test.svg");
-  runCli(["--edges", "Client-API,API-DB,API-Queue", "--out", output]);
-  assert.equal(existsSync(output), true);
-  const svg = await readFile(output, "utf8");
-  assert.match(svg, /^<svg [^>]+role="img">/);
-  assert.match(svg, /<line /);
-  assert.match(svg, /<circle /);
-  assert.match(svg, /<text /);
-  assert.match(svg, /Client/);
+test("CLI audits a valid deterministic snapshot", async () => {
+  const report = path.join(repoRoot, "cli-report.json");
+  const svg = path.join(repoRoot, "cli-audit.svg");
+  runCli([
+    "--input",
+    path.join(repoRoot, "examples", "pipeline.snapshot"),
+    "--report",
+    report,
+    "--svg",
+    svg,
+  ]);
+  assert.equal(existsSync(report), true);
+  assert.equal(existsSync(svg), true);
+  const json = await readFile(report, "utf8");
+  const parsed = JSON.parse(json);
+  assert.equal(parsed.passed, true);
+  assert.equal(parsed.overlap_pairs, 0);
+  assert.equal(parsed.edge_crossings, 0);
+  const image = await readFile(svg, "utf8");
+  assert.match(image, /marker-end/);
+  assert.match(image, /<title>/);
+  assert.match(image, /status=PASS/);
 });
 
-test("CLI rejects unsafe canvas and iteration values", () => {
-  runCli(["--width", "20"], 2);
-  runCli(["--iterations", "5001"], 2);
+test("CLI returns a quality failure for an overlapping snapshot", () => {
+  const result = runCli(
+    [
+      "--input",
+      path.join(repoRoot, "examples", "overlap.snapshot"),
+      "--report",
+      path.join(repoRoot, "overlap-report.json"),
+      "--svg",
+      path.join(repoRoot, "overlap-audit.svg"),
+    ],
+    1,
+  );
+  assert.match(result.stdout, /status: FAIL/);
+  assert.match(result.stdout, /overlaps: 1/);
+});
+
+test("CLI rejects malformed snapshots and option values", () => {
+  runCli(
+    [
+      "--input",
+      path.join(repoRoot, "examples", "missing.snapshot"),
+      "--report",
+      path.join(repoRoot, "invalid-report.json"),
+    ],
+    2,
+  );
+  runCli(["--max-overlaps", "--svg"], 2);
+});
+
+test("CLI exposes a version", () => {
+  const result = runCli(["--version"]);
+  assert.match(result.stdout, /moonlayout-audit 0\.2\.0/);
 });

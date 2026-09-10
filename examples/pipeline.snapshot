@@ -1,0 +1,9 @@
+# A reproducible layout snapshot for documentation and CI.
+canvas 900 600
+node Client 120 260 44 44
+node API 360 260 44 44
+node DB 600 180 44 44
+node Queue 600 340 44 44
+edge Client API
+edge API DB
+edge API Queue
