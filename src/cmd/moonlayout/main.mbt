@@ -11,7 +11,7 @@ struct Options {
 
 ///|
 fn main {
-  let options = parse_args(cli_args())
+  let options = parse_args(Array::from_fixed_array(cli_args()))
   if options.errors.length() > 0 {
     for error in options.errors {
       print_error(error)
@@ -170,7 +170,7 @@ fn print_help() -> Unit {
 }
 
 ///|
-extern "js" fn cli_args() -> Array[String] =
+extern "js" fn cli_args() -> FixedArray[String] =
   #| function() { return process.argv.slice(2); }
 
 ///|
