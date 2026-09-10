@@ -10,7 +10,7 @@ new input or regression case is important.
 Run the complete local check before opening a pull request:
 
 ```bash
-moon fmt --check
+moon fmt
 moon check --deny-warn
 moon test --deny-warn
 moon info

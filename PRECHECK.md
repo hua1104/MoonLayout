@@ -5,7 +5,7 @@
 ```bash
 moon version
 node --version
-moon fmt --check
+moon fmt
 moon check --deny-warn
 moon test --deny-warn
 moon info

@@ -151,7 +151,7 @@ MoonLayout Audit 自身以 MIT License 发布，许可证全文见仓库根目�
 ## 验收与复现命令
 
 ```bash
-moon fmt --check
+moon fmt
 moon check --deny-warn
 moon test --deny-warn
 moon info

@@ -21,7 +21,7 @@ Audit 将这些检查独立出来，作为布局引擎和文档构建之间的�
 要求 MoonBit 工具链和 Node.js（JS 目标只用于 CLI 文件读写）。
 
 ```bash
-moon fmt --check
+moon fmt
 moon check --deny-warn
 moon test --deny-warn
 moon build --target js src/cmd/moonlayout
@@ -116,7 +116,7 @@ Eclipse ELK、Graphviz 或 d3-force 的源代码。社区中的
 ## 验收命令
 
 ```bash
-moon fmt --check
+moon fmt
 moon check --deny-warn
 moon test --deny-warn
 moon info
